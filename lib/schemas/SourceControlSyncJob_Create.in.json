@@ -1,0 +1,56 @@
+{
+    "type": "object",
+    "properties": {
+        "resourceGroupName": {
+            "required": true,
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 90,
+            "pattern": "^[-\\w\\._]+$"
+        },
+        "automationAccountName": {
+            "required": true,
+            "type": "string"
+        },
+        "sourceControlName": {
+            "required": true,
+            "type": "string"
+        },
+        "sourceControlSyncJobId": {
+            "required": true,
+            "type": "string",
+            "format": "uuid"
+        },
+        "subscriptionId": {
+            "required": true,
+            "type": "string"
+        },
+        "requestBody": {
+            "description": "The parameters supplied to the create source control sync job operation.",
+            "properties": {
+                "properties": {
+                    "description": "The properties of the source control sync job.",
+                    "x-ms-client-flatten": true,
+                    "properties": {
+                        "commitId": {
+                            "description": "The commit id of the source control sync job. If not syncing to a commitId, enter an empty string.",
+                            "minLength": 0,
+                            "type": "string"
+                        }
+                    },
+                    "required": [
+                        "commitId"
+                    ]
+                }
+            },
+            "required": [
+                "properties"
+            ],
+            "type": "object"
+        },
+        "api_version": {
+            "required": true,
+            "type": "string"
+        }
+    }
+}
